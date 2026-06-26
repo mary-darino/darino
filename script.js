@@ -229,7 +229,9 @@ function toggleTheme() {
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     const btn = document.getElementById('themeToggle');
-    if (btn) btn.textContent = isDark ? '☀️' : '🌙';
+    if (btn) {
+        btn.textContent = isDark ? '☀️' : '🌙';
+    }
 }
 let expenseChartInstance = null;
 function renderCharts() {
@@ -278,10 +280,13 @@ function renderCharts() {
     });
 }
 document.addEventListener('DOMContentLoaded', function () {
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        document.getElementById('themeToggle').textContent = '☀️';
-    }
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+}
+const themeBtn = document.getElementById('themeToggle');
+if (themeBtn) {
+    themeBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+}
     document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
     currentUser = localStorage.getItem('currentUser');
     transactions = getTransactions();
