@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>دارینو</title>
+        <link rel="stylesheet" href="style.css">
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <div class="container">
+        <div class="hero">
+            <h1>💰دارینو</h1>
+            <p>
+               پولدار شو، بی‌دردسر
+            </p>
+            <button id="themeToggle" class="theme-btn">🌙 تغییر تم</button>
+            </div>
+                    <div class="auth-section">
+            <button id="showLoginBtn" class="auth-btn">ورود</button>
+            <button id="showRegisterBtn" class="auth-btn">ثبت‌نام</button>
+        </div>
+        <div id="loginForm" class="auth-form" style="display:none;">
+            <h3>🔐 ورود</h3>
+            <input type="text" id="loginUsername" placeholder="نام کاربری">
+            <input type="password" id="loginPassword" placeholder="رمز عبور">
+            <button id="loginBtn" class="income-btn">ورود</button>
+        </div>
+        <div id="registerForm" class="auth-form" style="display:none;">
+            <h3>📝 ثبت‌نام</h3>
+            <input type="text" id="regUsername" placeholder="نام کاربری">
+            <input type="password" id="regPassword" placeholder="رمز عبور">
+            <input type="password" id="regConfirmPassword" placeholder="تکرار رمز عبور">
+            <button id="registerBtn" class="expense-btn">ثبت‌نام</button>
+        </div>
+        <div id="welcomeSection" style="display:none;">
+            <p>خوش آمدید، <span id="currentUser"></span> 👋</p>
+            <button id="logoutBtn" class="delete-btn">خروج</button>
+        </div>
+            <div class="stats">
+                <div class="card">
+                    <h3>موجودی</h3>
+                    <p><span id="balance">0</span> تومان</p>
+                </div>
+                <div class="card income-card">
+                    <h3>کل درآمد</h3>
+                    <p><span id="totalIncome">0</span> تومان</p>
+                </div>
+                <div class="card expense-card">
+                    <h3>کل هزینه</h3>
+                    <p><span id="totalExpense">0</span>تومان</p>
+                </div>
+            </div>
+            <div class="goals-section">
+            <h3>هدف های مالی من</h3>
+            <input type="text"
+            id="goalName"
+            placeholder=" هدف ">
+            <input type="number"
+            id="goalAmount"
+            placeholder="مبلغ هدف">
+            <button onclick="saveGoal()">ذخیره هدف</button>
+            <p id="goalInfo"></p>
+            <div class="progress-bar">
+                <div id="goalProgress"></div>
+            </div>
+        </div>
+    <div class="content-overlay">
+    </div>
+        <hr>
+        <div class="add-transaction-section">
+            <h3>افزودن تراکنش</h3>
+            <input type="text" id="title" placeholder="عنوان تراکنش">
+            <input type="number" id="amount" placeholder="مبلغ تراکنش" min="1" step="1">
+        <select id="category">
+            <option value="غذا">🍔 غذا</option>
+            <option value="حمل و نقل">🚗 حمل و نقل</option>
+            <option value="خرید">🛒 خرید</option>
+            <option value="حقوق">💼 حقوق</option>
+            <option value="سرگرمی">🎮 سرگرمی</option>
+            <option value="قبض">📄 قبض</option>
+            <option value="سایر">📦 سایر</option>
+        </select>
+            <div class="buttons">
+            <button onclick="addIncome()"
+            class="income-btn">💰ثبت درآمد</button>
+            <button onclick="addExpense()"
+            class="expense-btn">💸ثبت هزینه</button>
+            <button onclick="clearAll()"
+            class="delete-btn">🗑️حذف همه</button>
+            </div>
+            <hr>
+            <div class="chart-box">
+                <div id="chartPlaceholder">
+        <span>📊</span>
+        <p id="chartPlaceholderText">برای مشاهده نمودار وارد شوید 🔐</p>
+    </div>
+    <canvas id="expenseChart" style="display:none;"></canvas>
+</div>
+             <div class="transaction-list-section">
+            <h2>📋تراکنش ها</h2>
+            <input type="text" id="search" placeholder="🔍 جستجو..." onkeyup="searchTransactions()">
+            <div class="filter-buttons">
+            </div><button onclick="showAll()">همه</button>
+            <button onclick="showIncome()">💰درآمدها</button>
+            <button onclick="showExpense()">💸هزینه ها</button>
+        </div>
+            <ul id="transactions"></ul>
+        </div>
+    </div>
+    <div class="content-overlay"></div>
+        <script src="script.js"></script>
+    </body>
+</html>
