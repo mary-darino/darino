@@ -229,7 +229,7 @@ function toggleTheme() {
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     const btn = document.getElementById('themeToggle');
-    if (btn) btn.textContent = isDark ? '☀️تغییر تم🌙' :`تغییر تم`;
+    if (btn) btn.textContent = isDark ? '☀️' : '🌙';
 }
 let expenseChartInstance = null;
 function renderCharts() {
